@@ -1,26 +1,28 @@
-@extends('app')
+@extends('app', ['title' => 'Hello'])
 
-@section('content')
-
+@section('heading')
     <div class="jumbotron">
         <div class="container">
             <h1>Buffered Reader</h1>
             <p>{{ $issue->name }}</p>
         </div>
     </div>
+@stop
 
-
+@section('content')
     <div class="container">
-        <div class="row">
 
+        <ul>
+            @foreach($issue->articles as $article)
+                <li>
+                    <h2><a href="{{ route('articles.show', $article->id) }}">{{ $article->title }} <small>{{ $article->subtitle }}</small></a></h2>
+                    <p>Published {{ $article->updated_at->diffForHumans() }}</p>
+                </li>
+            @endforeach
 
-            <div class="col-md-3">
-                <img src="{{ asset('img/' . $issue->cover_page) }}" alt="{{ $issue->name }}" class="img-responsive" />
-                <h2><a href="{{ url('issues/' . $issue->id) }}">{{ $issue->name }}</a></h2>
-                <p>
-                    <span class="label label-info">{{ $issue->slug }}</span>
-                </p>
-            </div>
-        </div>
+            <li>
+                <h2><a href="{{ route('articles.create') }}">Create new article</a></h2>
+            </li>
+        </ul>
     </div>
 @stop
