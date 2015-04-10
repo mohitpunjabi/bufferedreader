@@ -20,13 +20,6 @@
                         </div>
 
                         <div>
-                            {!! Form::label('slug', 'URL') !!}
-                            {!! Form::text('slug', null, ['class' => 'form-control danger', 'placeholder' => 'URL']) !!}
-                            <label class="help-block">This text would be the URL of the issue. Default is <code>mmm-yyyy</code>. Only alphabets, numbers and hyphens allowed.</label>
-                            @if($errors->first('slug')) <div class="alert alert-danger">{{ $errors->first('slug') }}</div> @endif
-                        </div>
-
-                        <div>
                             {!! Form::label('cover_page', 'Front cover page') !!}
                             {!! Form::file('cover_page', null, ['class' => 'form-control', 'placeholder' => 'Front cover page', 'accept' => 'image/*']) !!}
                             <label class="help-block">Upload a JPEG for the front cover. </label>

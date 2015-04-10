@@ -1,15 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use App\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\IssueRequest;
+use App\Http\Requests\ArticleRequest;
 use App\Issue;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Intervention\Image\Facades\Image;
 
-class IssuesController extends Controller {
+class ArticlesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -18,7 +17,7 @@ class IssuesController extends Controller {
 	 */
 	public function index()
 	{
-		return view('issues.index', ['issues' => Issue::all()]);
+		//
 	}
 
 	/**
@@ -28,7 +27,8 @@ class IssuesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('issues.create');
+        $issues = Issue::all()->lists('name', 'id');
+		return view('articles.create', compact('issues'));
 	}
 
 	/**
@@ -36,15 +36,11 @@ class IssuesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(IssueRequest $request)
+	public function store(ArticleRequest $request)
 	{
-		$issue = new Issue($request->all());
-        $issue->slug = str_slug($request->name);
-        $issue->cover_page = img_save($request->file('cover_page'));
-        $issue->jumbotron_photo = img_save($request->file('jumbotron_photo'));
-
-        $issue->save();
-        return redirect('issues');
+		$article = new Article($request->all());
+        $article->save();
+        return redirect('issues/' . $request->issue_id);
 	}
 
 	/**
@@ -55,8 +51,7 @@ class IssuesController extends Controller {
 	 */
 	public function show($id)
 	{
-        $issue = Issue::with('articles')->findOrFail($id);
-		return view('issues.show', compact('issue'));
+		//
 	}
 
 	/**

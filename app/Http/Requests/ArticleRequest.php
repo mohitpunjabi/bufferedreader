@@ -1,9 +1,8 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Illuminate\Support\Facades\Auth;
 
-class IssueRequest extends Request {
+class ArticleRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -12,8 +11,7 @@ class IssueRequest extends Request {
 	 */
 	public function authorize()
 	{
-//      TODO return Auth::user();
-        return true;
+		return true;
 	}
 
 	/**
@@ -24,10 +22,10 @@ class IssueRequest extends Request {
 	public function rules()
 	{
 		return [
-            'name' => 'required',
-            'cover_page' => 'required|image',
-            'jumbotron_photo' => 'required|image',
-		];
+            'title' => 'required',
+            'content' => 'required',
+            'issue_id' => 'required'
+        ];
 	}
 
 }

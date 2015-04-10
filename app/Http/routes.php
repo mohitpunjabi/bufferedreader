@@ -21,3 +21,4 @@ Route::controllers([
 ]);
 
 Route::resource('issues', 'IssuesController');
+Route::resource('articles', 'ArticlesController');

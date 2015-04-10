@@ -11,7 +11,15 @@ class Issue extends Model {
      */
     protected $fillable = [
         'name',
-        'slug'
     ];
+
+    /**
+     * An Issue can have many Articles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles() {
+        return $this->hasMany('App\Article');
+    }
 
 }
