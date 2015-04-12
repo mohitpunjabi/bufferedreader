@@ -9,18 +9,17 @@
 @stop
 
 @section('content')
-    <ul class="list-unstyled">
-        @foreach($issue->articles as $article)
-            <li>
-                <h2><a href="{{ route('articles.show', $article->id) }}">{{ $article->title }} <small>{{ $article->subtitle }}</small></a></h2>
-                <p>Last edited {{ $article->updated_at->diffForHumans() }}</p>
-            </li>
-        @endforeach
+    @foreach($issue->articles as $article)
+        <div class="post-preview">
+            <a href="{{ route('articles.show', $article->id) }}">
+                <h2 class="post-title">{{ $article->title }}</h2>
+                <h3 class="post-subtitle">{{ $article->subtitle }}</h3>
+            </a>
+            <p class="post-meta">Last edited {{ $article->updated_at->diffForHumans() }}</p>
+        </div>
+    @endforeach
 
-        @if(Auth::user())
-            <li>
-                <h2><a class="btn btn-lg btn-primary" href="{{ route('articles.create') }}">+ New article</a></h2>
-            </li>
-        @endif
-    </ul>
+    @if(Auth::user())
+        <a class="btn btn-lg btn-primary" href="{{ route('articles.create') }}">+ New article</a>
+    @endif
 @stop
