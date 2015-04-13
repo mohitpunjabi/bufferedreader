@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration {
             $table->text('title');
             $table->text('slug');
             $table->text('subtitle');
+            $table->string('jumbotron_photo');
             $table->text('content');
 			$table->timestamps();
 

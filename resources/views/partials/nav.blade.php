@@ -30,7 +30,7 @@
                     <a href="{{ url('/issues') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Issues <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         @foreach(App\Issue::all() as $issue)
-                            <li><a href="{{ url('/issues/' . $issue->id) }}">{{ $issue->name }}</a></li>
+                            <li>{!! link_issue($issue) !!}</li>
                         @endforeach
                     </ul>
                 </li>

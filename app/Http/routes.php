@@ -11,6 +11,9 @@
 |
 */
 
+use App\Article;
+use App\Issue;
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'IssuesController@index');
@@ -22,3 +25,19 @@ Route::controllers([
 
 Route::resource('issues', 'IssuesController');
 Route::resource('articles', 'ArticlesController');
+
+Route::bind('issues_slug', function($value)
+{
+    return Issue::where('slug', $value)->firstOrFail();
+});
+
+Route::bind('articles_slug', function($value)
+{
+    return Article::where('slug', $value)->firstOrFail();
+});
+
+Route::group(['prefix' => '/{issues_slug}'], function()
+{
+    Route::get('/', 'IssuesController@show');
+    Route::get('{articles_slug}', 'ArticlesController@show');
+});

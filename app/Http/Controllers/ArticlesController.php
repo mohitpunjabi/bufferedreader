@@ -41,27 +41,31 @@ class ArticlesController extends Controller {
 		return view('articles.create', compact('issues'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param ArticleRequest $request
+     * @return Response
+     */
 	public function store(ArticleRequest $request)
 	{
 		$article = new Article($request->all());
+        $article->slug = str_slug($request->title);
+        $article->published = false;
         $article->save();
-        return redirect('issues/' . $request->issue_id);
+        return redirect(url_article($article));
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param Article $article
+     * @param Issue $issue
+     * @return Response
+     * @internal param int $id
+     */
+	public function show(Issue $issue, Article $article)
 	{
-        $article = Article::findOrFail($id);
 		return view('articles.show', compact('article'));
 	}
 

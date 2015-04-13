@@ -57,15 +57,15 @@ class IssuesController extends Controller {
         return redirect('issues');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param Issue $issue
+     * @return Response
+     * @internal param int $id
+     */
+	public function show(Issue $issue)
 	{
-        $issue = Issue::with('articles')->findOrFail($id);
 		return view('issues.show', compact('issue'));
 	}
 

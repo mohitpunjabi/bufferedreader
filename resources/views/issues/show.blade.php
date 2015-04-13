@@ -11,7 +11,7 @@
 @section('content')
     @foreach($issue->articles as $article)
         <div class="post-preview">
-            <a href="{{ route('articles.show', $article->id) }}">
+            <a href="{{ url_article($article) }}">
                 <h2 class="post-title">{{ $article->title }}</h2>
                 <h3 class="post-subtitle">{{ $article->subtitle }}</h3>
             </a>
