@@ -20,6 +20,13 @@
 </div>
 
 <div>
+    {!! Form::label('short_description', 'Short description') !!}
+    {!! Form::textarea('short_description', null, ['class' => 'form-control', 'placeholder' => 'A short description in 300 characters', 'rows' => 3]) !!}
+    <label class="help-block">A short description for the article in 300 characters. Will be used as meta for search engines.</label>
+    @if($errors->first('short_description')) <div class="alert alert-danger">{{ $errors->first('short_description') }}</div> @endif
+</div>
+
+<div>
     {!! Form::label('content', 'Content') !!}
     {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Content', 'rows' => '60']) !!}
     <label class="help-block"></label>

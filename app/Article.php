@@ -15,7 +15,8 @@ class Article extends Model {
         'slug',
         'subtitle',
         'jumbotron_photo',
-        'content'
+        'content',
+        'short_description'
     ];
 
     /**

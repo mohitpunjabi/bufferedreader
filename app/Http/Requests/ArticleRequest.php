@@ -25,6 +25,7 @@ class ArticleRequest extends Request {
             'title'             => 'required',
             'content'           => 'required',
             'slug'              => 'required',
+            'short_description' => 'required|max:500',
             'jumbotron_photo'   => 'image'
         ];
 	}
