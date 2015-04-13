@@ -21,7 +21,7 @@
 
 <div>
     {!! Form::label('content', 'Content') !!}
-    {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Content']) !!}
+    {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Content', 'rows' => '60']) !!}
     <label class="help-block"></label>
     @if($errors->first('content')) <div class="alert alert-danger">{{ $errors->first('content') }}</div> @endif
 </div>

@@ -22,9 +22,10 @@ class ArticleRequest extends Request {
 	public function rules()
 	{
 		return [
-            'title'     => 'required',
-            'content'   => 'required',
-            'slug'      => 'required'
+            'title'             => 'required',
+            'content'           => 'required',
+            'slug'              => 'required',
+            'jumbotron_photo'   => 'image'
         ];
 	}
 

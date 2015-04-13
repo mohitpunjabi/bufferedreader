@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Article extends Model {
 
@@ -13,9 +14,19 @@ class Article extends Model {
         'title',
         'slug',
         'subtitle',
+        'jumbotron_photo',
         'content'
     ];
 
+    /**
+     * Uploads the image and sets the URL.
+     *
+     * @param $image
+     */
+    public function setJumbotronPhotoAttribute($image)
+    {
+        if($image instanceof UploadedFile) $this->attributes['jumbotron_photo'] = img_save($image);
+    }
 
     /**
      * An Article belongs to an Issue
