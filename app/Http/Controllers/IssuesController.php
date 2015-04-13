@@ -41,18 +41,15 @@ class IssuesController extends Controller {
 		return view('issues.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param IssueRequest $request
+     * @return Response
+     */
 	public function store(IssueRequest $request)
 	{
 		$issue = new Issue($request->all());
-        $issue->slug = str_slug($request->name);
-        $issue->cover_page = img_save($request->file('cover_page'));
-        $issue->jumbotron_photo = img_save($request->file('jumbotron_photo'));
-
         $issue->save();
         return redirect('issues');
 	}
@@ -69,26 +66,30 @@ class IssuesController extends Controller {
 		return view('issues.show', compact('issue'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Issue $issue
+     * @return Response
+     * @internal param int $id
+     */
+	public function edit(Issue $issue)
 	{
-		//
+		return view('issues.edit', compact('issue'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Issue $issue
+     * @param IssueRequest $request
+     * @return Response
+     * @internal param int $id
+     */
+	public function update(Issue $issue, IssueRequest $request)
 	{
-		//
+		$issue->update($request->all());
+        return redirect(url_issue($issue));
 	}
 
 	/**

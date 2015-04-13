@@ -5,6 +5,7 @@
         <div class="col-md-3">
             <img src="{{ asset('img/' . $issue->cover_page) }}" alt="{{ $issue->name }}" class="img-responsive" />
             <h3>{!! link_issue($issue) !!}</h3>
+            <a class="btn btn-info btn-block btn-small" href="{{ url_issue($issue).'/edit' }}">Edit</a>
         </div>
     @endforeach
     <div class="col-md-3">

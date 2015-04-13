@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Issue extends Model {
 
@@ -11,7 +12,21 @@ class Issue extends Model {
      */
     protected $fillable = [
         'name',
+        'slug',
+        'cover_page',
+        'jumbotron_photo',
+        'pdf_link'
     ];
+
+    public function setCoverPageAttribute($image)
+    {
+        if($image instanceof UploadedFile) $this->attributes['cover_page'] = img_save($image);
+    }
+
+    public function setJumbotronPhotoAttribute($image)
+    {
+        if($image instanceof UploadedFile) $this->attributes['jumbotron_photo'] = img_save($image);
+    }
 
     /**
      * An Issue can have many Articles

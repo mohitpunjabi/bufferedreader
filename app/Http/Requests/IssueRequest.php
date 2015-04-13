@@ -11,9 +11,8 @@ class IssueRequest extends Request {
 	 * @return bool
 	 */
 	public function authorize()
-	{
-//      TODO return Auth::user();
-        return true;
+    {
+        return Auth::user();
 	}
 
 	/**
@@ -24,10 +23,19 @@ class IssueRequest extends Request {
 	public function rules()
 	{
 		return [
-            'name' => 'required',
-            'cover_page' => 'required|image',
-            'jumbotron_photo' => 'required|image',
+            'name'              => 'required',
+            'slug'              => 'required',
+            'pdf_link'          => 'required|url',
+            'cover_page'        => 'image',
+            'jumbotron_photo'   => 'image',
 		];
 	}
+
+    public function all()
+    {
+        $data = parent::all();
+        $data['slug'] = str_slug($data['name']);
+        return $data;
+    }
 
 }

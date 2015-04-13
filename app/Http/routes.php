@@ -39,9 +39,14 @@ Route::group(['prefix' => '/{issues_slug}'], function()
     });
 
     Route::get('/', 'IssuesController@show');
+    Route::get('/edit', 'IssuesController@edit');
+    Route::patch('/update', 'IssuesController@update');
+
+    
     Route::get('{articles_slug}', 'ArticlesController@show');
     Route::get('/articles/create', 'ArticlesController@create');
     Route::post('/articles/store', 'ArticlesController@store');
+
     Route::get('/{articles_slug}/edit', 'ArticlesController@edit');
     Route::patch('/{articles_slug}/update', 'ArticlesController@update');
 });

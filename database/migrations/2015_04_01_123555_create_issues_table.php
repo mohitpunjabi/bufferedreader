@@ -16,6 +16,7 @@ class CreateIssuesTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
+            $table->string('pdf_link');
             $table->string('slug');
             $table->string('cover_page');
             $table->string('jumbotron_photo');
