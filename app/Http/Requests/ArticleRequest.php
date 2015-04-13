@@ -1,6 +1,6 @@
 <?php namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleRequest extends Request {
 
@@ -11,7 +11,7 @@ class ArticleRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return Auth::user();
 	}
 
 	/**
@@ -39,6 +39,5 @@ class ArticleRequest extends Request {
         $data['slug'] = str_slug($data['title']);
         return $data;
     }
-
 
 }
