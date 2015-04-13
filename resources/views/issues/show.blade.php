@@ -20,6 +20,6 @@
     @endforeach
 
     @if(Auth::user())
-        <a class="btn btn-lg btn-primary" href="{{ route('articles.create') }}">+ New article</a>
+        <a class="btn btn-lg btn-primary" href="{{ url_issue($issue) . '/articles/create' }}">+ New article</a>
     @endif
 @stop

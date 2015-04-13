@@ -2,14 +2,7 @@
 
 @section('content')
     <h1 class="page-header">Create an article</h1>
-    {!! Form::open(['route' => 'articles.store', 'files' => true]) !!}
-
-    <div class="form-group">
-        {!! Form::label('issue_id', 'Issue') !!}
-        {!! Form::select('issue_id', $issues, ['class' => 'form-control ', 'placeholder' => 'Issue']) !!}
-        <label class="help-block"></label>
-        @if($errors->first('issue_id')) <div class="alert alert-danger">{{ $errors->first('issue_id') }}</div> @endif
-    </div>
+    {!! Form::open(['url' => url_issue($issue).'/articles/store', 'files' => true]) !!}
 
     <div>
         {!! Form::label('title', 'Title') !!}
