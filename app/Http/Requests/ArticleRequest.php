@@ -22,9 +22,23 @@ class ArticleRequest extends Request {
 	public function rules()
 	{
 		return [
-            'title' => 'required',
-            'content' => 'required'
+            'title'     => 'required',
+            'content'   => 'required',
+            'slug'      => 'required'
         ];
 	}
+
+    /**
+     * Adds the slug to the input.
+     *
+     * @return array
+     */
+    public function all()
+    {
+        $data = parent::all();
+        $data['slug'] = str_slug($data['title']);
+        return $data;
+    }
+
 
 }
