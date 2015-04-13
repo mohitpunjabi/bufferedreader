@@ -33,15 +33,15 @@ Route::bind('issues_slug', function($value)
 
 Route::group(['prefix' => '/{issues_slug}'], function()
 {
-
     Route::bind('articles_slug', function($value, $route)
     {
-        return
-            $route->issues_slug->articles()->where('slug', $value)->firstOrFail();
+        return $route->issues_slug->articles()->where('slug', $value)->firstOrFail();
     });
 
     Route::get('/', 'IssuesController@show');
     Route::get('{articles_slug}', 'ArticlesController@show');
     Route::get('/articles/create', 'ArticlesController@create');
     Route::post('/articles/store', 'ArticlesController@store');
+    Route::get('/{articles_slug}/edit', 'ArticlesController@edit');
+    Route::patch('/{articles_slug}/update', 'ArticlesController@update');
 });

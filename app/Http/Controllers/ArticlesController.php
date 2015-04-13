@@ -69,27 +69,33 @@ class ArticlesController extends Controller {
 		return view('articles.show', compact('article'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Issue $issue
+     * @param Article $article
+     * @return Response
+     * @internal param int $id
+     */
+	public function edit(Issue $issue, Article $article)
 	{
-		//
+        return view('articles.edit', compact('article'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Issue $issue
+     * @param Article $article
+     * @param ArticleRequest $request
+     * @return Response
+     * @internal param int $id
+     */
+	public function update(Issue $issue, Article $article, ArticleRequest $request)
 	{
-		//
-	}
+        $article->update($request->all());
+        return redirect(url_article($article));
+    }
 
 	/**
 	 * Remove the specified resource from storage.
