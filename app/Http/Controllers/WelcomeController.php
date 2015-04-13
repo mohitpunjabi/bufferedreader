@@ -34,7 +34,7 @@ class WelcomeController extends Controller {
 	{
         $issue = Issue::latest();
         if(!$issue) abort(503);
-		return view('issues.show', compact('issue'));
+		return redirect(url_issue($issue));
 	}
 
 }

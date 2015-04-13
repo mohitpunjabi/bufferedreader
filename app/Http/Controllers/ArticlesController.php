@@ -106,4 +106,19 @@ class ArticlesController extends Controller {
 		//
 	}
 
+    /**
+     * Toggles the published status of an article.
+     *
+     *
+     * @param Issue $issue
+     * @param Article $article
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function publish(Issue $issue, Article $article)
+    {
+        $article->published = !$article->published;
+        $article->save();
+        return redirect()->back();
+    }
+
 }

@@ -63,7 +63,8 @@ class IssuesController extends Controller {
      */
 	public function show(Issue $issue)
 	{
-		return view('issues.show', compact('issue'));
+        $articles = $issue->articles()->visible()->get();
+		return view('issues.show', compact(['issue', 'articles']));
 	}
 
     /**

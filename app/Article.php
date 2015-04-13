@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Article extends Model {
@@ -38,4 +39,9 @@ class Article extends Model {
         return $this->belongsTo('App\Issue');
     }
 
+    public function scopeVisible($query)
+    {
+        if(Auth::guest())   return $query->where('published', true);
+        return $query;
+    }
 }
