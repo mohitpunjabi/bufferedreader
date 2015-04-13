@@ -1,7 +1,9 @@
-@extends('app', ['title' => 'Hello'])
+@extends('app', ['title' => 'Buffered Reader - '.$issue->name])
 
 @section('heading')
     @include('partials.header', [
+        'issue'      => true,
+        'pdfLink'    => '#',
         'background' => '/img/' . $issue->jumbotron_photo,
         'title'      => 'Buffered Reader',
         'subtitle'   => $issue->name
