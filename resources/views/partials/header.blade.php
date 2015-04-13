@@ -21,16 +21,4 @@
             </div>
         </div>
     </div>
-
-    @if(isset($edit) && Auth::user())
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <a class="btn btn-danger btn-lg btn-block" href="{{ Request::url() }}/edit">Edit</a>
-                    <p> </p>
-                </div>
-            </div>
-        </div>
-    @endif
-
 </header>
