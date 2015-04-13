@@ -1,16 +1,13 @@
-@extends('app')
+@extends('app', ['title' => $article->title])
 
 @section('heading')
-    <div class="jumbotron">
-        <div class="container">
-            <h1>{{ $article->title}}</h1>
-            <p>{{ $article->subtitle or '' }}</p>
-        </div>
-    </div>
+    @include('partials.header', [
+        'background' => '/img/' . $article->jumbotron_photo,
+        'title'      => $article->title,
+        'subtitle'   => $article->subtitle
+    ])
 @stop
 
 @section('content')
-    <div class="container">
-        {!! $article->content !!}
-    </div>
+    {!! $article->content !!}
 @stop
