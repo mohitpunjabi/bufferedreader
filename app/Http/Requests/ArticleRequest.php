@@ -23,8 +23,7 @@ class ArticleRequest extends Request {
 	{
 		return [
             'title' => 'required',
-            'content' => 'required',
-            'issue_id' => 'required'
+            'content' => 'required'
         ];
 	}
 

@@ -31,13 +31,17 @@ Route::bind('issues_slug', function($value)
     return Issue::where('slug', $value)->firstOrFail();
 });
 
-Route::bind('articles_slug', function($value)
-{
-    return Article::where('slug', $value)->firstOrFail();
-});
-
 Route::group(['prefix' => '/{issues_slug}'], function()
 {
+
+    Route::bind('articles_slug', function($value, $route)
+    {
+        return
+            $route->issues_slug->articles()->where('slug', $value)->firstOrFail();
+    });
+
     Route::get('/', 'IssuesController@show');
     Route::get('{articles_slug}', 'ArticlesController@show');
+    Route::get('/articles/create', 'ArticlesController@create');
+    Route::post('/articles/store', 'ArticlesController@store');
 });

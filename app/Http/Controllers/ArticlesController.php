@@ -13,7 +13,6 @@ class ArticlesController extends Controller {
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -30,29 +29,30 @@ class ArticlesController extends Controller {
 		//
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param Issue $issue
+     * @return Response
+     */
+	public function create(Issue $issue)
 	{
-        $issues = Issue::all()->lists('name', 'id');
-		return view('articles.create', compact('issues'));
+		return view('articles.create', compact('issue'));
 	}
 
     /**
      * Store a newly created resource in storage.
      *
      * @param ArticleRequest $request
+     * @param Issue $issue
      * @return Response
      */
-	public function store(ArticleRequest $request)
+	public function store(ArticleRequest $request, Issue $issue)
 	{
 		$article = new Article($request->all());
         $article->slug = str_slug($request->title);
         $article->published = false;
-        $article->save();
+        $issue->articles()->save($article);
         return redirect(url_article($article));
 	}
 

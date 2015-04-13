@@ -12,8 +12,7 @@ class Article extends Model {
     protected $fillable = [
         'title',
         'subtitle',
-        'content',
-        'issue_id'
+        'content'
     ];
 
 
