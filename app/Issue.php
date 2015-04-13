@@ -33,8 +33,14 @@ class Issue extends Model {
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function articles() {
+    public function articles()
+    {
         return $this->hasMany('App\Article');
+    }
+
+    public function scopeLatest($query)
+    {
+        return $query->orderBy('created_at', 'desc')->first();
     }
 
 }

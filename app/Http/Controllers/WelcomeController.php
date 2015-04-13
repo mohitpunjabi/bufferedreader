@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Issue;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +32,9 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+        $issue = Issue::latest();
+        if(!$issue) abort(503);
+		return view('issues.show', compact('issue'));
 	}
 
 }
