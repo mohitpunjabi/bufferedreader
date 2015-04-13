@@ -3,6 +3,7 @@
 @section('heading')
     @include('partials.header', [
         'issue'      => true,
+        'edit'       => true,
         'pdfLink'    => '#',
         'background' => '/img/' . $issue->jumbotron_photo,
         'title'      => 'Buffered Reader',

@@ -2,6 +2,7 @@
 
 @section('heading')
     @include('partials.header', [
+        'edit'       => true,
         'background' => '/img/' . $article->jumbotron_photo,
         'title'      => $article->title,
         'subtitle'   => $article->subtitle
