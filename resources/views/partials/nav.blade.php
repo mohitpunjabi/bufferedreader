@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top @if(isset($plainNav)) plain is-fixed is-visible @endif">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Buffered Reader</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Buffered Reader</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar">
@@ -29,8 +29,9 @@
                 <li class="dropdown">
                     <a href="{{ url('/issues') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Issues <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('/issues/4') }}">August 2014</a></li>
-                        <li><a href="{{ url('/issues/5') }}">March 2015</a></li>
+                        @foreach(App\Issue::all() as $issue)
+                            <li><a href="{{ url('/issues/' . $issue->id) }}">{{ $issue->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
@@ -39,3 +40,7 @@
     </div>
     <!-- /.container -->
 </nav>
+
+@if(isset($plainNav))
+    <br/><br/><br/> <!-- TODO: Stop using BRs -->
+@endif

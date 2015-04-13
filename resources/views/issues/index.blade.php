@@ -1,10 +1,4 @@
-@extends('app')
-
-@section('heading')
-    @include('partials.header', [
-        'title'      => 'Buffered Reader',
-    ])
-@stop
+@extends('app', ['plainNav' => true])
 
 @section('content')
     @foreach($issues as $issue)
