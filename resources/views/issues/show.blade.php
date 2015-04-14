@@ -22,7 +22,8 @@
                 <h2 class="post-title">{{ $article->title }}</h2>
                 <h3 class="post-subtitle">{{ $article->subtitle }}</h3>
             </a>
-            <p class="post-meta">Last edited {{ $article->updated_at->diffForHumans() }}</p>
+            <p class="post-meta">{{ $article->short_description }}</p>
+            <hr/>
 
         </div>
     @endforeach
