@@ -23,6 +23,7 @@
 
                 <li><a href="{{ url('/issues') }}">Create an issue</a></li>
                 <li><a href="{{ url('/authors') }}">Create an author</a></li>
+                <li><a href="{{ url('/images') }}">Upload images</a></li>
             </ul>
         @endunless
 

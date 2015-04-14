@@ -1,4 +1,8 @@
-@extends('app', ['plainNav' => true])
+@extends('app', [
+    'title'     => 'All Issues | Buffered Reader',
+    'noIndex'   => true,
+    'plainNav'  => true
+    ])
 
 @section('content')
     @foreach($issues as $issue)

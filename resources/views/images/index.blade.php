@@ -1,4 +1,8 @@
-@extends('app', ['title' => 'All Images | Buffered Reader', 'plainNav' => true])
+@extends('app', [
+    'title'     => 'All Images | Buffered Reader',
+    'noIndex'   => true,
+    'plainNav'  => true
+    ])
 
 @section('content')
 

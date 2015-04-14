@@ -1,4 +1,8 @@
-@extends('app', ['plainNav' => true])
+@extends('app', [
+    'title'     => 'Authors | Buffered Reader',
+    'noIndex'   => true,
+    'plainNav'  => true
+    ])
 
 @section('content')
     <h1 class="page-header">Update the article</h1>

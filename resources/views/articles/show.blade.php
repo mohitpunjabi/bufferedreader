@@ -1,4 +1,8 @@
-@extends('app', ['title' => $article->title])
+@extends('app', [
+    'title'             => $article->title,
+    'metaDescription'   => $article->short_description,
+    'ogImage'           => asset('img/'.$article->jumbotron_photo)
+    ])
 
 @section('heading')
     @include('partials.header', [

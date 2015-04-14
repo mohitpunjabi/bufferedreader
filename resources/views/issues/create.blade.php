@@ -1,4 +1,8 @@
-@extends('app', ['plainNav' => true])
+@extends('app', [
+    'title'     => 'Create Issue | Buffered Reader',
+    'noIndex'   => true,
+    'plainNav'  => true
+    ])
 
 @section('content')
     <h1 class="page-header">Create an article</h1>

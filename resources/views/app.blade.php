@@ -6,6 +6,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ $metaDescription or 'Buffered Reader is the biannual magazine of Department of Computer Science and Engineering, Indian School of Mines, Dhanbad.' }}" />
+    <meta name="revisit-after" content="2 days">
+    <meta name="language" content="english" />
+    <meta name="robots" content="{{ (isset($noIndex))? 'noindex, nofollow': 'index, follow'  }}" />
+    <meta name="author" content="{{ $author or 'Buffered Reader' }}" />
+    <meta property="og:image" content="{{ $ogImage or '' }}"/>
+    <meta property="og:title" content="{{ $title or 'Buffered Reader' }}" />
+    <meta property="og:description" content="{{ $metaDescription or 'Buffered Reader is the biannual magazine of Department of Computer Science and Engineering, Indian School of Mines, Dhanbad.' }}" />
+    <meta property="og:url" content="{{ Request::url() }}"/>
+    <meta property="og:site_name" content="Buffered Reader"/>
+
+
+    <link rel="icon" type="image/ico" href="{{ asset('favicon.png') }}" />
 
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 

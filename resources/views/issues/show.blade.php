@@ -1,4 +1,7 @@
-@extends('app', ['title' => 'Buffered Reader - '.$issue->name])
+@extends('app', [
+    'title'             => 'Buffered Reader - '.$issue->name,
+    'ogImage'           => asset('img/'.$issue->cover_page)
+    ])
 
 @section('heading')
     @include('partials.header', [
