@@ -65,4 +65,14 @@ class Article extends Model {
     {
         return $query->where('published', true);
     }
+
+    public function getPreviousAttribute()
+    {
+        return $this->issue->articles()->visible()->where('id', '<', $this->id)->orderBy('id', 'desc')->first();
+    }
+
+    public function getNextAttribute()
+    {
+        return $this->issue->articles()->visible()->where('id', '>', $this->id)->orderBy('id', 'asc')->first();
+    }
 }

@@ -52,8 +52,8 @@ class ArticlesController extends Controller {
 	{
 		$article = new Article($request->all());
         $article->published = false;
-        $this->syncAuthors($article, $request->input('author_list'));
         $issue->articles()->save($article);
+        $this->syncAuthors($article, $request->input('author_list'));
         return redirect(url_article($article));
 	}
 

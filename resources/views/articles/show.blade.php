@@ -23,4 +23,27 @@
         @include('authors.partials.list', ['authors' => $article->authors])
     @endunless
 
+    <hr/>
+
+    <div class="row">
+        @if($article->previous)
+            <div class="col-lg-6">
+                <a class="btn btn-block btn-lg btn-default" href="{{ url_article($article->previous) }}">
+                    <h2><span class="glyphicon glyphicon-chevron-left"></span> Previous</h2>
+                    <small>{{ str_limit($article->previous->title, 30, "&hellip;") }}</small>
+                </a>
+            </div>
+        @endif
+
+        @if($article->next)
+            <div class="col-lg-6">
+                <a class="btn btn-block btn-lg btn-primary" href="{{ url_article($article->next) }}">
+                    <h2>Next <span class="glyphicon glyphicon-chevron-right"></span></h2>
+                    <small>{{ str_limit($article->next->title, 30, "&hellip;") }}</small>
+                </a>
+            </div>
+        @endif
+    </div>
+
+
 @stop
