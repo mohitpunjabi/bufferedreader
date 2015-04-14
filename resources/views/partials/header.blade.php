@@ -9,8 +9,7 @@
                         <span class="subheading">{{ $subtitle or '' }}</span>
                         <p> </p>
                         <div>
-                            <a class="btn btn-primary btn-lg" href="{{ $pdfLink }}">Download PDF</a>
-                            <a class="btn btn-default btn-lg" href="{{ $pdfLink }}">Share</a>
+                            <a class="btn btn-primary btn-lg" href="{{ $pdfLink }}"><span class="glyphicon glyphicon-download-alt"></span> Download PDF</a>
                         </div>
                     @else
                         <h1>{{ $title or '' }}</h1>
