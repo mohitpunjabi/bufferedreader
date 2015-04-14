@@ -24,6 +24,8 @@
                 <li><a href="{{ url('/issues') }}">Create an issue</a></li>
                 <li><a href="{{ url('/authors') }}">Create an author</a></li>
                 <li><a href="{{ url('/images') }}">Upload images</a></li>
+                <li><a href="https://github.com/mohitpunjabi/bufferedreader/issues" target="_blank">Report a bug</a></li>
+
             </ul>
         @endunless
 
