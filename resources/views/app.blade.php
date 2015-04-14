@@ -32,6 +32,8 @@
     <![endif]-->
 
     @yield('meta', '')
+
+    @include('partials.analytics')
 </head>
 <body>
     @include('partials.nav')
