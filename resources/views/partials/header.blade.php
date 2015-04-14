@@ -1,8 +1,8 @@
-<header class="intro-header" style="background-image: url('{{ $background or '' }}')">
+<header class="intro-header @if(isset($dark) && $dark) intro-header-dark @endif" style="background-image: url('{{ $background or '' }}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
+                <div class="site-heading @if(isset($dark) && $dark) text-dark @endif">
                     @if(isset($issue))
                         <h1 itemprop="name">{{ $title or '' }}</h1>
                         <hr class="small">

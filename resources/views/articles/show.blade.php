@@ -1,14 +1,16 @@
 @extends('app', [
     'title'             => $article->title,
     'metaDescription'   => $article->short_description,
-    'ogImage'           => asset('img/'.$article->jumbotron_photo)
+    'ogImage'           => asset('img/'.$article->jumbotron_photo),
+    'plainNav'          => $article->jumbotron_photo == ''
     ])
 
 @section('heading')
     @include('partials.header', [
         'background' => '/img/' . $article->jumbotron_photo,
         'title'      => $article->title,
-        'subtitle'   => $article->subtitle
+        'subtitle'   => $article->subtitle,
+        'dark'       => $article->jumbotron_photo == ''
     ])
 @stop
 

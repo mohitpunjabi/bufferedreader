@@ -10,7 +10,7 @@
         'pdfLink'    => $issue->pdf_link,
         'background' => '/img/' . $issue->jumbotron_photo,
         'title'      => 'Buffered Reader',
-        'subtitle'   => $issue->name
+        'subtitle'   => $issue->name,
     ])
 @stop
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top @if(isset($plainNav)) plain is-fixed is-visible @endif" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top @if(isset($plainNav) && $plainNav) plain is-fixed is-visible @endif" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -47,6 +47,6 @@
     <!-- /.container -->
 </nav>
 
-@if(isset($plainNav))
+@if(isset($plainNav) && $plainNav)
     <br/><br/><br/> <!-- TODO: Stop using BRs -->
 @endif
