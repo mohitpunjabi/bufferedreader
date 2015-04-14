@@ -21,7 +21,7 @@
 
 <div>
     {!! Form::label('author_list', 'Authors') !!}
-    {!! Form::select('author_list[]', $authors, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+    {!! Form::select('author_list[]', $authors, null, ['class' => 'form-control', 'multiple' => 'multiple', 'id' => 'author_list']) !!}
     <label class="help-block">Authors of the article. If the authors aren't on the list, you can <a href="{{ url('/authors') }}" target="_blank">add them here.</a></label>
     @if($errors->first('authors')) <div class="alert alert-danger">{{ $errors->first('authors') }}</div> @endif
 </div>
