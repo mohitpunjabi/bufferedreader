@@ -5,7 +5,7 @@
     ])
 
 @section('content')
-    <h1 class="page-header">Update the article</h1>
+    <h1 class="page-header">Update the author</h1>
     {!! Form::model($author, ['method' => 'PATCH', 'route' => ['authors.update', $author->id], 'files' => true]) !!}
 
         @include('authors.partials.form', ['buttonText' => 'Update'])
