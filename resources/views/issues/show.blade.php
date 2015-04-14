@@ -16,16 +16,17 @@
 
 @section('content')
     @foreach($articles as $article)
-        <div class="post-preview @unless($article->published) unpublished @endunless">
+        <div class="post-preview @unless($article->published) unpublished @endunless" itemscope itemtype="http://schema.org/Article">
             <div class="pull-right">
                 @include('articles.partials.admin_tools', ['article' => $article])
             </div>
 
-            <a href="{{ url_article($article) }}">
-                <h2 class="post-title">{{ $article->title }}</h2>
+            <a href="{{ url_article($article) }}" itemprop="url">
+                <h2 class="post-title" itemprop="name">{{ $article->title }}</h2>
                 <h3 class="post-subtitle">{{ $article->subtitle }}</h3>
             </a>
-            <p class="post-meta">{{ $article->short_description }}</p>
+            <p class="post-meta" itemprop="description">{{ $article->short_description }}</p>
+            <link itemprop="image" href="{{ asset('/img/' . $article->jumbotron_photo) }}" />
             <hr/>
 
         </div>

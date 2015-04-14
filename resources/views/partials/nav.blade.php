@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top @if(isset($plainNav)) plain is-fixed is-visible @endif">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top @if(isset($plainNav)) plain is-fixed is-visible @endif" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('/') }}">Buffered Reader</a>
+            <a class="navbar-brand" href="{{ url('/') }}" itemprop="url">Buffered Reader</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar">
@@ -30,13 +30,13 @@
         @endunless
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('/about') }}">About</a></li>
+                <li itemprop="name"><a href="{{ url('/') }}" itemprop="url">Home</a></li>
+                <li itemprop="name"><a href="{{ url('/about') }}" itemprop="url">About</a></li>
                 <li class="dropdown">
                     <a href="{{ url('/issues') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Issues <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         @foreach(App\Issue::all() as $issue)
-                            <li>{!! link_issue($issue) !!}</li>
+                            <li itemprop="name">{!! link_issue($issue) !!}</li>
                         @endforeach
                     </ul>
                 </li>

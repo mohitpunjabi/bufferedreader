@@ -18,7 +18,7 @@ function url_article(Article $article) {
 }
 
 function link_issue(Issue $issue) {
-    return '<a href="'.url_issue($issue).'">'.$issue->name.'</a>';
+    return '<a href="'.url_issue($issue).'" itemprop="url">'.$issue->name.'</a>';
 }
 
 function submit_sitemap()
