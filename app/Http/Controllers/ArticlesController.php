@@ -52,7 +52,7 @@ class ArticlesController extends Controller {
 	{
 		$article = new Article($request->all());
         $article->published = false;
-        $article->authors()->sync($request->input('author_list'));
+        $this->syncAuthors($article, $request->input('author_list'));
         $issue->articles()->save($article);
         return redirect(url_article($article));
 	}
@@ -96,7 +96,7 @@ class ArticlesController extends Controller {
 	public function update(Issue $issue, Article $article, ArticleRequest $request)
 	{
         $article->update($request->all());
-        $article->authors()->sync($request->input('author_list'));
+        $this->syncAuthors($article, $request->input('author_list'));
         return redirect(url_article($article));
     }
 
@@ -126,4 +126,9 @@ class ArticlesController extends Controller {
         return redirect()->back();
     }
 
+    private function syncAuthors(Article $article, $authors = [])
+    {
+        if($authors == null) $authors = [];
+        $article->authors()->sync($authors);
+    }
 }
