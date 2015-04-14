@@ -30,13 +30,29 @@ class Article extends Model {
         if($image instanceof UploadedFile) $this->attributes['jumbotron_photo'] = img_save($image);
     }
 
+    public function getAuthorListAttribute()
+    {
+        return $this->authors()->lists('id');
+    }
+
     /**
-     * An Article belongs to an Issue
+     * An Article belongs to an Issue.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function issue() {
+    public function issue()
+    {
         return $this->belongsTo('App\Issue');
+    }
+
+    /**
+     * An Article has many authors.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function authors()
+    {
+        return $this->belongsToMany('App\Author');
     }
 
     public function scopeVisible($query)
@@ -44,4 +60,5 @@ class Article extends Model {
         if(Auth::guest())   return $query->where('published', true);
         return $query;
     }
+
 }

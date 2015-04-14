@@ -25,6 +25,7 @@ Route::controllers([
 
 Route::resource('issues', 'IssuesController');
 Route::resource('articles', 'ArticlesController');
+Route::resource('authors', 'AuthorsController');
 
 Route::bind('issues_slug', function($value)
 {

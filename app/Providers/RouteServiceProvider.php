@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider {
 
         $router->model('issues', 'App\Issue');
         $router->model('articles', 'App\Article');
+        $router->model('authors', 'App\Author');
 	}
 
 	/**

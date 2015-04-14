@@ -21,7 +21,8 @@
                     </ul>
                 </li>
 
-                <li><a href="{{ url('/issues') }}">All Issues</a></li>
+                <li><a href="{{ url('/issues') }}">Create an issue</a></li>
+                <li><a href="{{ url('/authors') }}">Create an author</a></li>
             </ul>
         @endunless
 

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Article;
+use App\Author;
 use App\Http\Requests;
 
 use App\Http\Requests\ArticleRequest;
@@ -36,7 +37,8 @@ class ArticlesController extends Controller {
      */
 	public function create(Issue $issue)
 	{
-		return view('articles.create', compact('issue'));
+        $authors = Author::all()->lists('name', 'id');
+		return view('articles.create', compact('issue', 'authors'));
 	}
 
     /**
@@ -50,6 +52,7 @@ class ArticlesController extends Controller {
 	{
 		$article = new Article($request->all());
         $article->published = false;
+        $article->authors()->sync($request->input('author_list'));
         $issue->articles()->save($article);
         return redirect(url_article($article));
 	}
@@ -77,7 +80,8 @@ class ArticlesController extends Controller {
      */
 	public function edit(Issue $issue, Article $article)
 	{
-        return view('articles.edit', compact('article'));
+        $authors = Author::all()->lists('name', 'id');
+        return view('articles.edit', compact('article', 'authors'));
 	}
 
     /**
@@ -92,6 +96,7 @@ class ArticlesController extends Controller {
 	public function update(Issue $issue, Article $article, ArticleRequest $request)
 	{
         $article->update($request->all());
+        $article->authors()->sync($request->input('author_list'));
         return redirect(url_article($article));
     }
 

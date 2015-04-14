@@ -20,6 +20,13 @@
 </div>
 
 <div>
+    {!! Form::label('author_list', 'Authors') !!}
+    {!! Form::select('author_list[]', $authors, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+    <label class="help-block">Authors of the article. If the authors aren't on the list, you can <a href="{{ url('/authors') }}" target="_blank">add them here.</a></label>
+    @if($errors->first('authors')) <div class="alert alert-danger">{{ $errors->first('authors') }}</div> @endif
+</div>
+
+<div>
     {!! Form::label('short_description', 'Short description') !!}
     {!! Form::textarea('short_description', null, ['class' => 'form-control', 'placeholder' => 'A short description in 300 characters', 'rows' => 3]) !!}
     <label class="help-block">A short description for the article in 300 characters. Will be used as meta for search engines.</label>
