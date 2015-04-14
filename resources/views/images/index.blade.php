@@ -30,4 +30,4 @@
     @foreach($images as $image)
         <a href="{{ asset($image) }}"><img src="{{ asset($image) }}" height="50" /></a>
     @endforeach
-@stop@stop
+@stop
