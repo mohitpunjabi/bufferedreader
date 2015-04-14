@@ -15,6 +15,7 @@ use App\Article;
 use App\Issue;
 
 Route::get('/', 'WelcomeController@index');
+Route::get('about', 'WelcomeController@about');
 
 Route::get('home', 'IssuesController@index');
 

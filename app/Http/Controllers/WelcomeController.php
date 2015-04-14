@@ -36,4 +36,9 @@ class WelcomeController extends Controller {
 		return redirect(url_issue($issue));
 	}
 
+    public function about()
+    {
+        return view('about');
+    }
+
 }
