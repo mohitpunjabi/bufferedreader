@@ -57,8 +57,12 @@ class Article extends Model {
 
     public function scopeVisible($query)
     {
-        if(Auth::guest())   return $query->where('published', true);
+        if(Auth::guest())   return $query->published();
         return $query;
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
 }

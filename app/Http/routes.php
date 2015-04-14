@@ -16,6 +16,8 @@ use App\Issue;
 
 Route::get('/', 'WelcomeController@index');
 Route::get('about', 'WelcomeController@about');
+Route::get('sitemap', 'SitemapController@index');
+Route::get('sitemap/submit', 'SitemapController@submit');
 
 Route::get('home', 'IssuesController@index');
 
