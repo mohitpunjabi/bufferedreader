@@ -6,7 +6,7 @@
                     @include('authors.partials.admin_tools', ['author' => $author])
                 </div>
                 <div class="media-left">
-                    <img src="{{ asset('/img/'.$author->image) }}" itemprop="image" class="media-object img-responsive pull-left" title="{{ $author->name }}">
+                    <img src="{{ asset('/img/'.$author->image) }}" itemprop="image" class="media-object pull-left" title="{{ $author->name }}">
                 </div>
                 <div class="media-body">
                     <h3 class="media-heading" itemprop="name">{{ $author->name }}</h3>
