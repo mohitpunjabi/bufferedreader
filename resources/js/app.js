@@ -5,7 +5,6 @@ $(function() {
 $(function() {
     $('.fb-share-link').click(function(e) {
         var url = $(this).attr('href');
-        alert(url);
         FB.ui({
             method: 'share',
             href: url
