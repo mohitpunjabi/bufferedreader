@@ -16,7 +16,9 @@
     <meta property="og:description" content="{{ $metaDescription or 'Buffered Reader is the biannual magazine of Department of Computer Science and Engineering, Indian School of Mines, Dhanbad.' }}" />
     <meta property="og:url" content="{{ Request::url() }}"/>
     <meta property="og:site_name" content="Buffered Reader"/>
+    <meta property="fb:app_id" content="1438194786474656" />
 
+    @yield('meta', '')
 
     <link rel="icon" type="image/ico" href="{{ asset('favicon.png') }}" />
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
@@ -30,11 +32,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    @yield('meta', '')
-
     @include('partials.analytics')
 </head>
 <body>
+    @include('partials.facebook')
+
     @include('partials.nav')
 
     @yield('heading', '')
@@ -46,6 +48,7 @@
             </div>
         </div>
     </div>
+
     @include('partials.footer')
 
     <!-- Scripts -->

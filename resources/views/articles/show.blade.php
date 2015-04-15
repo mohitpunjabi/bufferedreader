@@ -14,6 +14,10 @@
     ])
 @stop
 
+@section('meta')
+    <meta property="og:type" content="article" />
+@stop
+
 @section('content')
     <div itemscope itemtype="http://schema.org/Article">
         <meta itemprop="datePublished" content="{{ $article->updated_at }}"/>

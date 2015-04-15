@@ -10,11 +10,14 @@
                         <p> </p>
                         <div>
                             <a class="btn btn-primary btn-lg" href="{{ $pdfLink }}"><span class="glyphicon glyphicon-download-alt"></span> Download PDF</a>
+                            <a class="btn btn-default btn-lg fb-share-link" href="{{ Request::url() }}">Share</a>
                         </div>
                     @else
                         <h1 itemprop="name">{{ $title or '' }}</h1>
                         <h2 class="subheading">{{ $subtitle or '' }}</h2>
                         <span class="meta">{{ $meta or '' }}</span>
+                        <p> </p>
+                        <a class="btn btn-default fb-share-link" href="{{ Request::url() }}">Share</a>
                     @endif
                 </div>
             </div>
