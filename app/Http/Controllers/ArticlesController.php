@@ -6,6 +6,7 @@ use App\Http\Requests;
 
 use App\Http\Requests\ArticleRequest;
 use App\Issue;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 class ArticlesController extends Controller {
@@ -67,6 +68,7 @@ class ArticlesController extends Controller {
      */
 	public function show(Issue $issue, Article $article)
 	{
+        if(!Auth::user() && !$article->published) abort(404);
 		return view('articles.show', compact('article'));
 	}
 
