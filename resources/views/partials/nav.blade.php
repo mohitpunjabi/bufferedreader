@@ -35,7 +35,7 @@
                 <li class="dropdown">
                     <a href="{{ url('/issues') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Issues <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        @foreach(App\Issue::all() as $issue)
+                        @foreach(App\Issue::orderBy('created_at', 'desc')->get() as $issue)
                             <li itemprop="name">{!! link_issue($issue) !!}</li>
                         @endforeach
                     </ul>
