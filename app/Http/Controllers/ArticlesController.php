@@ -125,6 +125,7 @@ class ArticlesController extends Controller {
     {
         $article->published = !$article->published;
         $article->save();
+        if($article->published) myCurl('https://graph.facebook.com/?id='.url_article($article).'&scrape=1&method=POST');
         return redirect()->back();
     }
 
