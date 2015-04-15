@@ -19,7 +19,7 @@
         <div class="post-preview @unless($article->published) unpublished @endunless" itemscope itemtype="http://schema.org/Article">
             @if(Auth::user())
                 <div class="pull-right">
-                    <small class="text-muted">Last edited {{ $article->updated_at->diffForHumans() }}.</small>
+                    <div class="small text-muted text-right">Last edited {{ $article->updated_at->diffForHumans() }}.</div>
                     @include('articles.partials.admin_tools', ['article' => $article])
                 </div>
             @endif
