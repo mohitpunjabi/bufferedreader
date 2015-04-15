@@ -17,9 +17,12 @@
 @section('content')
     @foreach($articles as $article)
         <div class="post-preview @unless($article->published) unpublished @endunless" itemscope itemtype="http://schema.org/Article">
-            <div class="pull-right">
-                @include('articles.partials.admin_tools', ['article' => $article])
-            </div>
+            @if(Auth::user())
+                <div class="pull-right">
+                    <small class="text-muted">Last edited {{ $article->updated_at->diffForHumans() }}.</small>
+                    @include('articles.partials.admin_tools', ['article' => $article])
+                </div>
+            @endif
 
             <a href="{{ url_article($article) }}" itemprop="url">
                 <h2 class="post-title" itemprop="name">{{ $article->title }}</h2>
