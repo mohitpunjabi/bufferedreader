@@ -11,12 +11,45 @@ use Illuminate\Support\Facades\URL;
 
 class SitemapController extends Controller {
 
+    /**
+     * Creates a new Controller instance.
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'index']);
+    }
 
     /**
      * Generates a basic sitemap.
      *
      */
     public function index()
+    {
+        $sitemap = $this->buildSitemap();
+        return $sitemap->render('xml');
+    }
+
+    /**
+     * Submits the sitemap to various sites.
+     *
+     */
+    public function submit()
+    {
+        submit_sitemap();
+        $sitemap = $this->buildSitemap();
+        foreach($sitemap->model->items as $item)
+        {
+            submit_to_facebook($item['loc']);
+        }
+    }
+
+    /**
+     * Builds all links.
+     *
+     * @return Sitemap
+     */
+    private function buildSitemap()
     {
         $sitemap = App::make("sitemap");
         // check if there is cached sitemap and build new only if is not
@@ -43,15 +76,6 @@ class SitemapController extends Controller {
             }
         }
 
-        return $sitemap->render('xml');
-    }
-
-    /**
-     * Submits the sitemap to various sites.
-     *
-     */
-    public function submit()
-    {
-        submit_sitemap();
+        return $sitemap;
     }
 }

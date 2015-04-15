@@ -46,3 +46,8 @@ function myCurl($url)
     curl_close($ch);
     return $httpCode;
 }
+
+function submit_to_facebook($url)
+{
+    return myCurl('https://graph.facebook.com/?id='.$url.'&scrape=1&method=POST');
+}
