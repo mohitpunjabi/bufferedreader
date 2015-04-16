@@ -14,6 +14,12 @@
     ])
 @stop
 
+@section('meta')
+    @foreach($issue->seeAlso as $also)
+        <meta property="og:see_also" content="{{ url_issue($also) }}" />
+    @endforeach
+@stop
+
 @section('content')
     @foreach($articles as $article)
         <div class="post-preview @unless($article->published) unpublished @endunless" itemscope itemtype="http://schema.org/Article">

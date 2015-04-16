@@ -75,4 +75,9 @@ class Article extends Model {
     {
         return $this->issue->articles()->visible()->where('id', '>', $this->id)->orderBy('id', 'asc')->first();
     }
+
+    public function getSeeAlsoAttribute()
+    {
+        return $this->issue->articles()->published()->where('id', '!=', $this->id)->take(4)->get();
+    }
 }

@@ -16,12 +16,17 @@
 
 @section('meta')
     <meta property="og:type" content="article" />
+    <meta property="article:section" content="{{ $article->issue->name }}" />
+    @foreach($article->seeAlso as $also)
+        <meta property="og:see_also" content="{{ url_article($also) }}" />
+    @endforeach
 @stop
 
 @section('content')
     <div itemscope itemtype="http://schema.org/Article">
         <meta itemprop="datePublished" content="{{ $article->updated_at }}"/>
         <meta itemprop="description" content="{{ $article->short_description }}"/>
+        <meta itemprop="articleSection" content="{{ $article->issue->name }}" />
         @unless($article->jumbotron_photo == '')
             <link itemprop="image" href="{{ asset('/img/' . $article->jumbotron_photo) }}" />
             <link itemprop="thumbnailUrl" href="{{ asset('/img/' . $article->jumbotron_photo) }}" />

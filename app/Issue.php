@@ -44,4 +44,8 @@ class Issue extends Model {
         return $query->orderBy('created_at', 'desc')->first();
     }
 
+    public function getSeeAlsoAttribute()
+    {
+        return Issue::where('id', '!=', $this->id)->get();
+    }
 }
