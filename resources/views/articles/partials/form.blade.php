@@ -1,4 +1,8 @@
 <div>
+    <button class="btn btn-block btn-primary" type="submit">{{ $buttonText }}</button>
+</div>
+
+<div>
     {!! Form::label('title', 'Title') !!}
     {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
     <label class="help-block"></label>
@@ -35,9 +39,67 @@
 
 <div>
     {!! Form::label('content', 'Content') !!}
-    {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Content', 'rows' => '60']) !!}
+    {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Content', 'rows' => '40', 'style' => 'font-family: monospace']) !!}
     <label class="help-block"></label>
     @if($errors->first('content')) <div class="alert alert-danger">{{ $errors->first('content') }}</div> @endif
+</div>
+
+<div>
+    <h3>Useful snippets</h3>
+        <h4>Add an image</h4>
+<pre>
+{{
+'
+<a href="/img/path.jpg">
+    <img itemprop="image"class="img-responsive center-block" src="/img/path.jpg" alt="Alternate text" title="Tooltip.">
+</a>
+<span class="caption text-muted">Caption of the image.</span>
+'
+}}
+</pre>
+
+        <h4>Add an image pulled right</h4>
+<pre>
+{{
+'
+<div class="col-lg-6 pull-right-lg">
+    <a href="/img/6L4U8NnfLsl3CXn.jpg">
+        <img itemprop="image"class="img-responsive" src="/img/path.jpg" alt="Alternate text" title="Tooltip.">
+    </a>
+    <span class="caption text-muted">Caption.</span>
+</div>
+'
+}}
+</pre>
+
+        <h4>2 columns</h4>
+<pre>
+{{
+'
+<div class="row">
+    <div class="col-lg-6">
+        ...
+    </div>
+    <div class="col-lg-6">
+        ...
+    </div>
+</div>
+'
+}}
+</pre>
+
+        <h4>Add a blockquote</h4>
+<pre>
+{{
+'
+<blockquote>
+    The quote.
+    <small>Author, if any</small>
+</blockquote>
+'
+}}
+</pre>
+
 </div>
 
 <div>
