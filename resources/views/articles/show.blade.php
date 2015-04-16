@@ -22,7 +22,10 @@
     <div itemscope itemtype="http://schema.org/Article">
         <meta itemprop="datePublished" content="{{ $article->updated_at }}"/>
         <meta itemprop="description" content="{{ $article->short_description }}"/>
-        <link itemprop="image" href="{{ asset('/img/' . $article->jumbotron_photo) }}" />
+        @unless($article->jumbotron_photo == '')
+            <link itemprop="image" href="{{ asset('/img/' . $article->jumbotron_photo) }}" />
+            <link itemprop="thumbnailUrl" href="{{ asset('/img/' . $article->jumbotron_photo) }}" />
+        @endunless
         <link itemprop="url" href="{{ url_article($article) }}" />
 
         @include('articles.partials.admin_tools', ['article' => $article])
