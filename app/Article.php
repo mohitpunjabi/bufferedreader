@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Article extends Model {
@@ -78,6 +79,12 @@ class Article extends Model {
 
     public function getSeeAlsoAttribute()
     {
-        return $this->issue->articles()->published()->where('id', '!=', $this->id)->take(4)->get();
+        return $this->issue
+            ->articles()
+            ->published()
+            ->where('id', '!=', $this->id)
+            ->orderBy(DB::raw('abs(id - '.$this->id.')'))
+            ->take(4)
+            ->get();
     }
 }
