@@ -1,7 +1,9 @@
 <?php namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -79,12 +81,14 @@ class Article extends Model {
 
     public function getSeeAlsoAttribute()
     {
-        return $this->issue
-            ->articles()
-            ->published()
-            ->where('id', '!=', $this->id)
-            ->orderBy(DB::raw('abs(id - '.$this->id.')'))
-            ->take(4)
-            ->get();
+        return Cache::remember($this->id.'-article-see-also', Carbon::MINUTES_PER_HOUR, function() {
+            return $this->issue
+                ->articles()
+                ->published()
+                ->where('id', '!=', $this->id)
+                ->orderBy(DB::raw('abs(cast(id as signed) - ' . $this->id . ')'))
+                ->take(4)
+                ->get();
+        });
     }
 }

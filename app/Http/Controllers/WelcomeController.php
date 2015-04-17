@@ -22,7 +22,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-        $issue = Issue::latest();
+        $issue = Issue::latest()->first();
         if(!$issue) abort(503);
 		return redirect(url_issue($issue));
 	}

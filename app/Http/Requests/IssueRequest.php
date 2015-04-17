@@ -35,6 +35,8 @@ class IssueRequest extends Request {
     {
         $data = parent::all();
         $data['slug'] = str_slug($data['name']);
+
+        Cache::forget('all-issues');
         return $data;
     }
 

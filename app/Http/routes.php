@@ -19,6 +19,12 @@ Route::get('about', 'WelcomeController@about');
 Route::get('sitemap', 'SitemapController@index');
 Route::get('sitemap/submit', 'SitemapController@submit');
 
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+});
+
+
 Route::get('home', 'IssuesController@index');
 
 Route::controllers([

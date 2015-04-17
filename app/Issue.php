@@ -39,11 +39,6 @@ class Issue extends Model {
         return $this->hasMany('App\Article');
     }
 
-    public function scopeLatest($query)
-    {
-        return $query->orderBy('created_at', 'desc')->first();
-    }
-
     public function getSeeAlsoAttribute()
     {
         return Issue::where('id', '!=', $this->id)->get();
