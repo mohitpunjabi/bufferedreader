@@ -79,6 +79,16 @@ class Article extends Model {
         return $this->issue->articles()->visible()->where('id', '>', $this->id)->orderBy('id', 'asc')->first();
     }
 
+    public function getOgImageAttribute()
+    {
+        return asset('img/'.((!$this->hasBackground)? $this->issue->cover_page: $this->jumbotron_photo));
+    }
+
+    public function getHasBackgroundAttribute()
+    {
+        return ($this->jumbotron_photo != '');
+    }
+
     public function getSeeAlsoAttribute()
     {
         return Cache::remember($this->id.'-article-see-also', Carbon::MINUTES_PER_HOUR, function() {

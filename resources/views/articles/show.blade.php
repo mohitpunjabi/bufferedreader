@@ -1,8 +1,8 @@
 @extends('app', [
     'title'             => $article->title,
     'metaDescription'   => $article->short_description,
-    'ogImage'           => asset('img/'.(($article->jumbotron_photo == '')? $article->issue->cover_page: $article->jumbotron_photo)),
-    'plainNav'          => $article->jumbotron_photo == ''
+    'ogImage'           => $article->ogImage,
+    'plainNav'          => !$article->hasBackground
     ])
 
 @section('heading')
@@ -10,7 +10,7 @@
         'background' => '/img/' . $article->jumbotron_photo,
         'title'      => $article->title,
         'subtitle'   => $article->subtitle,
-        'dark'       => $article->jumbotron_photo == ''
+        'dark'       => !$article->hasBackground
     ])
 @stop
 
