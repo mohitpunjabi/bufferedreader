@@ -1,7 +1,7 @@
 <ul class="media-list">
     @foreach($authors as $author)
-        <li class="media" itemprop="author">
-            <div itemscope itemtype="http://schema.org/Person">
+        <li class="media">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
                 <div class="pull-right">
                     @include('authors.partials.admin_tools', ['author' => $author])
                 </div>
