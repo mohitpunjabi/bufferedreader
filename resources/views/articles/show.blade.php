@@ -1,5 +1,5 @@
 @extends('app', [
-    'title'             => $article->title,
+    'title'             => $article->title . ' - Buffered Reader, ' . $article->issue->name,
     'metaDescription'   => $article->short_description,
     'ogImage'           => $article->ogImage,
     'plainNav'          => !$article->hasBackground
