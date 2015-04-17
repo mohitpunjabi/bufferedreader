@@ -51,3 +51,13 @@ function submit_to_facebook($url)
 {
     return myCurl('https://graph.facebook.com/?id='.$url.'&scrape=1&method=POST');
 }
+
+function eql()
+{
+    DB::enableQueryLog();
+}
+
+function ddql()
+{
+    dd(DB::getQueryLog());
+}
