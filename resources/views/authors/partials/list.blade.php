@@ -10,7 +10,7 @@
                 </div>
                 <div class="media-body">
                     <h3 class="media-heading" itemprop="name">{{ $author->name }}</h3>
-                    <p class="media-heading" itemprop="description">{{ $author->about }}</p>
+                    <p class="media-heading" itemprop="description">{!! $author->about !!}</p>
                 </div>
             </div>
         </li>
