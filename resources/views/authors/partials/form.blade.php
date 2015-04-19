@@ -11,7 +11,7 @@
         </div>
         <br/>
         <div>
-            {!! Form::file('image', ['accept' => 'image/*') !!}
+            {!! Form::file('image', ['accept' => 'image/*']) !!}
             @if($errors->first('image')) <div class="alert alert-danger">{{ $errors->first('image') }}</div> @endif
         </div>
     </div>
