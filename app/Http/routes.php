@@ -36,7 +36,7 @@ Route::resource('issues', 'IssuesController');
 Route::resource('articles', 'ArticlesController');
 Route::resource('authors', 'AuthorsController');
 
-Route::get('/images', 'ImagesController@index');
+Route::any('/images', 'ImagesController@index');
 Route::post('/images/store', 'ImagesController@store');
 
 Route::bind('issues_slug', function($value)

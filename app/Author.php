@@ -23,9 +23,10 @@ class Author extends Model {
     {
         if($image instanceof UploadedFile)
         {
-            $img = Image::make($image);
-            $img->fit(100);
-            $this->attributes['image'] = $img->save('img/author-' . $this->id . '-' . str_slug($this->attributes['name']) . '.jpg')->basename;
+            $this->attributes['image'] = img_save($image, Tag::whereIn('tag', ['person', 'author'])->get(), function($img)
+            {
+                $img->fit(100);
+            });
         }
     }
 

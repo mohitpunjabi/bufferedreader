@@ -1,5 +1,18 @@
 $(function() {
-   $('#author_list').select2();
+   $('#author_list').select2({
+       placeholder: "Authors"
+   });
+    $('.tag-list').select2({
+        placeholder: "Select tags",
+        tags: true,
+        tokenSeparators: [',', ' ']
+    });
+
+    $('#tag_filter_list').select2({
+        placeholder: "Filter by tags",
+        tags: false,
+        tokenSeparators: [',', ' ']
+    });
 });
 
 $(function() {

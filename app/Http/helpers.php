@@ -5,8 +5,25 @@ use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
-function img_save(UploadedFile $file) {
-    return Image::make($file)->save('img/' . str_random(15) . '.jpg')->basename;
+function img_save(UploadedFile $file, $tags = null, $filters = null) {
+    $imageName = img_upload($file, $filters);
+    $image = new App\Image();
+    $image->name = $imageName;
+    $image->save();
+
+    if($tags) $image->tags()->sync($tags);
+
+    return $imageName;
+}
+
+function img_upload(UploadedFile $file, $filters) {
+    $imageName = str_random(15) . '.' . $file->getClientOriginalExtension();
+    $img = Image::make($file);
+    if($filters) $filters($img);
+    $img->save('img/' . $imageName);
+    Image::make($file)->heighten(100)->save('img/thumbnails/' . $imageName);
+
+    return $imageName;
 }
 
 function url_issue(Issue $issue) {
