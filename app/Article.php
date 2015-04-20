@@ -30,7 +30,7 @@ class Article extends Model {
      */
     public function setJumbotronPhotoAttribute($image)
     {
-        if($image instanceof UploadedFile) $this->attributes['jumbotron_photo'] = img_save($image, Tag::where('tag', 'covers')->get());
+        if($image instanceof UploadedFile) $this->attributes['jumbotron_photo'] = img_save($image, Tag::where('tag', 'cover')->get());
     }
 
     public function getAuthorListAttribute()

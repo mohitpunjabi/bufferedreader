@@ -21,12 +21,12 @@ class Issue extends Model {
 
     public function setCoverPageAttribute($image)
     {
-        if($image instanceof UploadedFile) $this->attributes['cover_page'] = img_save($image, Tag::where('tag', 'covers')->get());
+        if($image instanceof UploadedFile) $this->attributes['cover_page'] = img_save($image, Tag::where('tag', 'cover')->get());
     }
 
     public function setJumbotronPhotoAttribute($image)
     {
-        if($image instanceof UploadedFile) $this->attributes['jumbotron_photo'] = img_save($image, Tag::where('tag', 'covers')->get());
+        if($image instanceof UploadedFile) $this->attributes['jumbotron_photo'] = img_save($image, Tag::where('tag', 'cover')->get());
     }
 
     /**
