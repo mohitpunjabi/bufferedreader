@@ -159,7 +159,7 @@ hr.small {
 .intro-header {
 	background: no-repeat center center; 
 	background-attachment: scroll;
-    background-color: transparent;
+    background-color: @brand-primary;
 	.background-cover;
 	// NOTE: Background images are set within the HTML using inline CSS!
 	margin-bottom: 50px;
@@ -173,15 +173,20 @@ hr.small {
 		}
 	}
 
-    &-dark .site-heading,
-    &-dark .post-heading,
-    &-dark .page-heading {
-      padding: 30px 0 50px;
-      color: @gray-dark;
-      @media only screen and (min-width: 768px) {
-        padding: 45px 0;
+    &-dark {
+      background-color: transparent;
+
+      .site-heading,
+      .post-heading,
+      .page-heading {
+        padding: 30px 0 50px;
+        color: @gray-dark;
+        @media only screen and (min-width: 768px) {
+          padding: 45px 0;
+        }
       }
     }
+
 
 	.site-heading,
 	.page-heading {

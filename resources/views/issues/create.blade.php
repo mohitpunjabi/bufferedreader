@@ -5,7 +5,7 @@
     ])
 
 @section('content')
-    <h1 class="page-header">Create an article</h1>
+    <h1 class="page-header">Create an issue</h1>
 
     {!! Form::open(['route' => 'issues.store', 'files' => true]) !!}
 

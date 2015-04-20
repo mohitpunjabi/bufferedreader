@@ -21,9 +21,15 @@
                     </ul>
                 </li>
 
-                <li><a href="{{ url('/issues') }}">Create an issue</a></li>
-                <li><a href="{{ url('/authors') }}">Create an author</a></li>
-                <li><a href="{{ url('/images') }}">Upload images</a></li>
+                <li class="dropdown">
+                    <a href="{{ url('/issues') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Create <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/issues') }}">An issue</a></li>
+                            <li><a href="{{ url('/authors') }}">An author</a></li>
+                            <li><a href="{{ url('/images') }}">Upload images</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="https://github.com/mohitpunjabi/bufferedreader/issues" target="_blank">Report a bug</a></li>
 
             </ul>
