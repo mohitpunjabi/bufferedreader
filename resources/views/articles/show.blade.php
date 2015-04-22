@@ -23,6 +23,22 @@
 @stop
 
 @section('content')
+
+    <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="linkIssue">
+        <link itemprop="url" href="{{ url() }}">
+        <meta itemprop="title" content="Buffered Reader">
+    </div>
+
+    <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" id="linkIssue" itemref="linkArticle">
+        <link itemprop="url" href="{{ url_issue($article->issue) }}">
+        <meta itemprop="title" content="{{ $article->issue->name }}">
+    </div>
+
+    <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" id="linkArticle">
+        <link itemprop="url" href="{{ url_article($article) }}">
+        <meta itemprop="title" content="{{ $article->title }}">
+    </div>
+
     <div itemscope itemtype="http://schema.org/Article">
         <meta itemprop="datePublished" content="{{ $article->updated_at }}"/>
         <meta itemprop="description" content="{{ $article->short_description }}"/>

@@ -20,6 +20,11 @@
 @stop
 
 @section('content')
+    <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <link itemprop="url" href="{{ url_issue($issue) }}">
+        <meta itemprop="title" content="{{ $issue->name }}">
+    </div>
+
     @foreach($articles as $article)
         <div class="post-preview @unless($article->published) unpublished @endunless" itemscope itemtype="http://schema.org/Article">
             @if(Auth::user())
